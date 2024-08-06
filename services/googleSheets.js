@@ -8,7 +8,7 @@ const credentialsPath = path.resolve(__dirname, '../testcloud-431621-5623f2ecb7b
 async function authenticate() {
   const auth = new google.auth.GoogleAuth({
    keyFile: credentialsPath,
-    scopes: ['https://www.googleapis.com/auth/spreadsheets],
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
   return await auth.getClient();
 }
