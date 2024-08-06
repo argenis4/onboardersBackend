@@ -4,12 +4,13 @@ const path = require('path');
 const router = express.Router();
 
 // Ruta absoluta al archivo de credenciales
-const credentialsPath ='/etc/secret/GOOGLE_APPLICATION_CREDENTIALS.json';
+//const credentialsPath ='/etc/secret/GOOGLE_APPLICATION_CREDENTIALS.json';
 
 // Autenticación con Google Sheets API
 async function authenticate() {
+    const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
   const auth = new google.auth.GoogleAuth({
-    keyFile: credentialsPath,
+    keyFile: credentials,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
   return await auth.getClient();
