@@ -3,7 +3,7 @@ const { google } = require('googleapis');
 const path = require('path');
 const router = express.Router();
 
-const credentialsPath = '/etc/secrets/GOOGLE_APPLICATION_CREDENTIALS.json';
+const credentialsPath = '../etc/secrets/GOOGLE_APPLICATION_CREDENTIALS.json';
 
 console.log('Using credentials from:', credentialsPath);
 // Autenticación con Google Sheets API
