@@ -3,9 +3,8 @@ const { google } = require('googleapis');
 const path = require('path');
 const router = express.Router();
 
-// Ruta absoluta al archivo de credenciales
-const credentialsPath = path.resolve(__dirname, '../testcloud-431621-5623f2ecb7b3.json');
-
+const credentialsPath = process.env.GOOGLE_APPLICATION_CREDENTIALS || path.resolve(__dirname, '../testcloud-431621-5623f2ecb7b3.json');
+console.log('Using credentials from:', credentialsPath);
 // Autenticación con Google Sheets API
 async function authenticate() {
   const auth = new google.auth.GoogleAuth({
