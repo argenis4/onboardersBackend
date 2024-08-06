@@ -3,7 +3,8 @@ const { google } = require('googleapis');
 const path = require('path');
 const router = express.Router();
 
-const credentialsPath =JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+const credentialsPath = path.resolve(__dirname, 'GOOGLE_APPLICATION_CREDENTIALS.json'); // Configurar con las credenciales de la API de Google
+
 console.log('Using credentials from:', credentialsPath);
 // Autenticación con Google Sheets API
 async function authenticate() {
