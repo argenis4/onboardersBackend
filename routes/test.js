@@ -8,7 +8,7 @@ const router = express.Router();
 
 // Autenticación con Google Sheets API
 async function authenticate() {
-    const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+    const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_NEW);
 
   const auth = new google.auth.GoogleAuth({
     credentials,
