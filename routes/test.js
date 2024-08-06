@@ -1,34 +1,18 @@
 const express = require('express');
 const { google } = require('googleapis');
 const path = require('path');
-const axios = require('axios');
-const fs = require('fs');
 const router = express.Router();
 
+// Ruta absoluta al archivo de credenciales
+const credentialsPath = path.resolve(__dirname, '../testcloud-431621-5623f2ecb7b3.json');
 
-const credentialsUrl = 'https://www.drogueriasur.com.ar/dsx/img/apis.json';
-const credentialsPath = path.join(__dirname, 'apis.json');
-
-async function downloadCredentials() {
-  const response = await axios.get(credentialsUrl, { responseType: 'stream' });
-  return new Promise((resolve, reject) => {
-    const fileStream = fs.createWriteStream(credentialsPath);
-    response.data.pipe(fileStream);
-    fileStream.on('finish', () => resolve());
-    fileStream.on('error', reject);
-  });
-}
-
+// Autenticación con Google Sheets API
 async function authenticate() {
-  // Descargar credenciales si no están disponibles
-  if (!fs.existsSync(credentialsPath)) {
-    await downloadCredentials();
-  }
-  
-const auth = new google.auth.GoogleAuth({
+  const auth = new google.auth.GoogleAuth({
     keyFile: credentialsPath,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
+  return await auth.getClient();
 }
 
 // Actualiza el contador de descargas para un lead específico
