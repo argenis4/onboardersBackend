@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const { filterLeadsAndUpdateCount } = require('../services/googleSheets');
 const router = express.Router();
 
@@ -7,10 +8,10 @@ router.post('/', async (req, res) => {
   try {
     const csvData = await filterLeadsAndUpdateCount(filters);
 
-      /* await axios.post('https://hook.us2.make.com/1qd4cpqgsgl70ey9yg5b0w55u86yv6kb', {
+       await axios.post('https://hook.us2.make.com/1qd4cpqgsgl70ey9yg5b0w55u86yv6kb', {
       filters,
       timestamp: new Date().toISOString(),
-    });*/
+    });
 
     
     res.setHeader('Content-Type', 'text/csv');
