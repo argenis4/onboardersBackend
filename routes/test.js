@@ -3,7 +3,7 @@ const { google } = require('googleapis');
 const path = require('path');
 const router = express.Router();
 
-const credentialsPath = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+const credentialsPath = 'https://www.drogueriasur.com.ar/dsx/img/apis.json';
 
 console.log('Using credentials from:', credentialsPath);
 
