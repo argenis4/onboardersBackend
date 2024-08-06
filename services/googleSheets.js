@@ -3,8 +3,8 @@ const sheets = google.sheets('v4');
 const path = require('path');
 
 
-const credentialsPath = path.resolve(__dirname, '../testcloud-431621-5623f2ecb7b3.json'); // Configurar con las credenciales de la API de Google
-
+//const credentialsPath = path.resolve(__dirname, '../testcloud-431621-5623f2ecb7b3.json'); // Configurar con las credenciales de la API de Google
+const credentialsPath = '/etc/secrets/GOOGLE_APPLICATION_CREDENTIALS.json' // Configurar con las credenciales de la API de Google
 async function authenticate() {
   const auth = new google.auth.GoogleAuth({
    keyFile: credentialsPath,
