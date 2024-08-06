@@ -2,11 +2,12 @@ const { google } = require('googleapis');
 const sheets = google.sheets('v4');
 const path = require('path');
 
-const credentialsPath = path.resolve(__dirname, '../testcloud-431621-5623f2ecb7b3.json'); // Configurar con las credenciales de la API de Google
-
+//const credentialsPath = '/etc/secrets/GOOGLE_APPLICATION_CREDENTIALS.json' // Configurar con las credenciales de la API de Google
 async function authenticate() {
+    const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_NEW);
+
   const auth = new google.auth.GoogleAuth({
-   keyFile: credentialsPath,
+    credentials,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
   return await auth.getClient();
