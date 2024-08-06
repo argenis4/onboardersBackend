@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
- "start": "node index.js",
-  "build": "echo \"building\""
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "build": "echo \"building\""
   },
   "keywords": [],
   "author": "",
